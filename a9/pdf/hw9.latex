@@ -1,0 +1,55 @@
+\documentclass{report}
+\title{Homework 9}
+\author{Rumen Mitov}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 9.2}
+a) The algorithm for reversing a list saves the pointer to the next element
+in the list, then it updates the next pointer of the current element to point
+to the previous element. The algorithm has $\Theta(n)$ time-complexity because
+it passes through each element in the list once and we perform $\Theta(1)$
+operations to change the pointers. The algorithm is in-situ
+because it does not require auxiliary space to operate, since the algorithm
+only changes the node to which a pointer is pointing to.
+\newline
+\begin{algorithm}
+\caption{ReverseList(head)}
+\begin{algorithmic}
+\State $cursor \gets head$
+\State $prev \gets NULL$
+\While{$cursor \rightarrow next \neq NULL$}
+    \State $next = cursor \rightarrow next$
+    \State $cursor \rightarrow next = prev$
+    \State $prev = cursor$
+    \State $cursor = next$
+\EndWhile
+
+\State $cursor \rightarrow next = prev$
+
+\end{algorithmic}
+\end{algorithm}
+\newline
+\newline
+\newline
+b) You can find the implementation in \textbf{bst/src}. The time-complexity of 
+the algorithm is $\Theta(n)$ as we are passing through each element once.
+\newline
+\newline
+\newline
+c) You can find the implementation in \textbf{bst/src}. The time-complexity of
+converting the list to a BST will be $Theta(n)$ as I am using Red-Black and each step
+in the algorithm is $\Theta(1)$, and that multiplied by n-elements gives us 
+$\Theta(n)$. Since I am using Red-Black Trees, I can ensure that the tree's
+height will be balanced, thus giving me a searching time-complexity of $\O(\log n)$
+which is lower than the brute-force approach of $O(n)$. Also, my implementation
+will work even for unsorted arrays.
+
+
+\end{document}

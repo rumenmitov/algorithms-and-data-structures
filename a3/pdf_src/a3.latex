@@ -1,0 +1,152 @@
+\documentclass{report}
+\title{Homework 3}
+\author{Rumen Mitov}
+
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+
+\graphicspath{ {./pdf_src/assets/} }
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 3.1}
+\subsection*{Definitions:}
+\begin{enumerate}
+    \item $f(n) \in \Theta (g) \iff \exists n_0, c_1, c_2 \in \mathbb{N} \| \forall n > n_0 \| c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)$
+    \item $f(n) \in O(g) \iff \exists n_0, c \in \mathbb{N} \| \forall n > n_0 \| f(n) \leq c \cdot g(n)$
+    \item $f(n) \in \Omega (g) \iff \exists n_0, c \in \mathbb{N} \| \forall n > n_0 \| c \cdot g(n) \leq f(n)$
+    \item $f(n) \in o(g) \iff \exists n_0, c \in \mathbb{N} \| \forall n > n_0 \| f(n) \le c \cdot g(n)$
+    \item $f(n) \in \omega (g) \iff \exists n_0, c \in \mathbb{N} \| \forall n > n_0 \| c \cdot g(n) \le f(n)$
+\end{enumerate}
+
+\subsection*{$f(n) = 9n \land g(n) = 5n^3$}
+Checking f(n): \\
+$\lim{n \to \infty} \frac{9n}{5n^3}$ \\
+$ = 0 $ \\
+\newline
+Checking g(n): \\
+$\lim{n \to \infty} \frac{5n^3}{9n}$ \\
+$ = \infty $ \\
+\newline
+Hence:
+\begin{enumerate}
+    \item $f(n) \notin \Theta (g)$
+    \item $f(n) \notin O(g)$
+    \item $f(n) \notin \Omega (g)$
+    \item $f(n) \in o(g)$
+    \item $f(n) \notin \omega (g)$
+    \item $g(n) \notin \Theta (f)$
+    \item $g(n) \notin O(f)$
+    \item $g(n) \notin \Omega (f)$
+    \item $g(n) \notin o(f)$
+    \item $g(n) \in \omega (f)$
+\end{enumerate}
+
+\subsection*{$f(n) = 9n^{0.8} + 2n^{0.3} + 14\log n \land g(n) = \sqrt{n} = n^{0.5}$}
+Checking f(n): \\
+$\lim{n \to \infty} \frac{9n^{0.8} + 2n^{0.3} + 14\log n}{n^{0.5}}$ \\
+$ = \infty $ \\
+\newline
+Checking g(n): \\
+$\lim{n \to \infty} \frac{n^{0.5}}{9n^{0.8} + 2n^{0.3} + 14\log n}$ \\
+$ = 0 $ \\
+\newline
+Hence:
+\begin{enumerate}
+    \item $f(n) \notin \Theta (g)$
+    \item $f(n) \notin O(g)$
+    \item $f(n) \notin \Omega (g)$
+    \item $f(n) \notin o(g)$
+    \item $f(n) \in \omega (g)$
+    \item $g(n) \notin \Theta (f)$
+    \item $g(n) \notin O(f)$
+    \item $g(n) \notin \Omega (f)$
+    \item $g(n) \in o(f)$
+    \item $g(n) \notin \omega (f)$
+\end{enumerate}
+
+\subsection*{$f(n) = \frac{n^2}{\log n} \land g(n) = n \cdot \log n$}
+Checking f(n): \\
+$\lim{n \to \infty} \frac{\frac{n^2}{\log n}}{n \cdot \log n}$ \\
+$ = \lim{n \to \infty} \frac{n}{\log^2 n}$ (apply L'Hopitals) \\
+$ = \lim{n \to \infty} \frac{n \cdot \ln 10}{2 \cdot \log n}$ (apply L'Hopitals) \\
+$ = \lim{n \to \infty} \frac{n \cdot \ln^2 10}{2}$ \\
+$ = \infty $ \\
+\newline
+Checking g(n): \\
+$\lim{n \to \infty} \frac{n \cdot \log n}{\frac{n^2}{\log n}}$ \\
+$ = \lim{n \to \infty} \frac{\log^2 n}{n}$ (apply L'Hopitals) \\
+$ = \lim{n \to \infty} \frac{2 \cdot \log n}{n \cdot \ln 10}$ (apply L'Hopitals) \\
+$ = \lim{n \to \infty} \frac{2}{n \cdot \ln^2 10}$ \\
+$ = 0 $ \\
+\newline
+Hence:
+\begin{enumerate}
+    \item $f(n) \notin \Theta (g)$
+    \item $f(n) \notin O(g)$
+    \item $f(n) \notin \Omega (g)$
+    \item $f(n) \notin o(g)$
+    \item $f(n) \in \omega (g)$
+    \item $g(n) \notin \Theta (f)$
+    \item $g(n) \notin O(f)$
+    \item $g(n) \notin \Omega (f)$
+    \item $g(n) \in o(f)$
+    \item $g(n) \notin \omega (f)$
+\end{enumerate}
+
+\subsection*{$f(n) = (\log 3n)^3 \land g(n) = 9 \cdot \log n$}
+Checking f(n): \\
+$\lim{n \to \infty} \frac{(\log 3n)^3}{9 \cdot \log n}$ \\
+$ = \lim{n \to \infty} \frac{(\log 3n)^3}{\log n^9}$ (apply L'Hopitals)\\
+$ = \lim{n \to \infty} \frac{\log^2 (3n)}{3}$ \\
+$ = \infty $ \\
+\newline
+Checking g(n): \\
+$\lim{n \to \infty} \frac{9 \cdot \log n}{(\log 3n)^3}$ \\
+$ = \lim{n \to \infty} \frac{\log n^9}{(\log 3n)^3}$ (apply L'Hopitals)\\
+$ = \lim{n \to \infty} \frac{3}{\log^2 (3n)}$ \\
+$ = 0 $ \\
+\newline
+Hence:
+\begin{enumerate}
+    \item $f(n) \notin \Theta (g)$
+    \item $f(n) \notin O(g)$
+    \item $f(n) \notin \Omega (g)$
+    \item $f(n) \notin o(g)$
+    \item $f(n) \in \omega (g)$
+    \item $g(n) \notin \Theta (f)$
+    \item $g(n) \notin O(f)$
+    \item $g(n) \notin \Omega (f)$
+    \item $g(n) \in o(f)$
+    \item $g(n) \notin \omega (f)$
+\end{enumerate}
+
+\section*{Problem 3.2}
+\subsection*{Proof that Selection Sort is Correct}
+\textit{Precondition:} Array with n elements is unsorted ($A_{[0, n)}$).\\
+\textbf{Loop Invariant:} Elements in $A_{[0, i)}$ are sorted, such that $A_i \leq A_{i+1}$. \\
+for $i \coloneq 0$; $i < n$ \{ \\
+\indent $A_i \coloneq min(A_{[i, n)})$ \\
+\indent $\forall x \in A_{[i, n)} \|  A_x \geq A_i$ \\
+\indent $i \coloneq i + 1$ \\
+\} \\
+\textit{Postcondition:} $A_{[0, n)}$ is sorted. $\blacksquare$ \\
+
+\subsection*{Selection Sort Runtime}
+\includegraphics[scale=0.25]{selection_sort} \\
+Let $T(n)$ be the average time complexity. \\
+$\exists n_0, c_1, c_2 \in \mathbb{N} \| c_1 \cdot n^2 \leq T(n) \leq c_2 \cdot n^2, \forall n > n_0$ \\
+\newline
+$n_0 = 1250$ \\
+\newline
+$c_1 = \frac{3292}{2500^2}$ \\
+\newline
+$c_2 = \frac{3638}{2500^2}$ \\
+
+
+
+
+\end{document}

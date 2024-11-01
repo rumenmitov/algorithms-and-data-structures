@@ -1,0 +1,64 @@
+\documentclass{report}
+\title{Homework 6}
+\author{Rumen Mitov}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+    \graphicspath{ {./pdf/assets} }
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 6.1}
+\begin{algorithm}
+\caption{BubbleSort(A, lo, hi)}
+\begin{algorithmic}
+\For{$i \gets lo; i < hi; i \gets i + 1$} \Comment{Loop through all elements}
+    \For{$j \gets i; j < hi - 1; j \gets j + 1$}
+        \If{$A[j] > A[j + 1]$} \Comment{Check if adjacent element needs to be swapped with current}
+            \State Swap(A[j], A[j + 1]);
+        \EndIf
+    \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+Bubble sort has to iterate over the array an amount of times as the size of the array, regardless of how
+the elements in the array are arranged. Hence: \\
+\newline
+$T(n) = \Sigma_{i=0}^{n - 1} n - i$ \\
+\newline
+$T(n) = \frac{n(n+1)}{2}$ \\
+\newline
+$T(n) = \Theta(n^2)$ \\
+\newline
+\newline
+\newline
+Insertion and bubble sort are stable because they only perform a swap on two elements if they do not meet the comparison
+condition. Since equality is assumed to meet the comparison condition, elements are not swapped, hence algorithms are stable. \\
+Merge sort is also stable because during the merge step, if the top elements of both arrays are the same, the left element should
+be handled first, thus maintaining stability. \\
+Heap sort is stable, because the structure of the array is preserved (we only extract the top element and then heapify-down). \\
+\newline
+\newline
+\newline
+Insertion and heap sort are the only two algorithms that are adaptive. If part of the array is already sorted, insertion sort
+does not need to check it, hence it speeds the process up. In the case of heap sort, the heap data structure ensures that the data is
+weakly sorted and that existing order is what makes heap sort so performant.\\
+Merge and bubble sort are not adaptive because they will go through all the iterations, regardless of an existing order in the input.\\
+\newline
+\newline
+\newline
+\begin{center}
+    \includegraphics[scale=0.25]{graph}
+\end{center}
+When comparing the bottom-up apprach to top-down heap-sort, we can clearly see that bottom-up will be less efficient.
+This is because we are performing an extra 2 swaps per iteration in the heap sort. And the assumption that these swaps are rare
+cannot be justified as when we swap the new root with a leaf, we are breaking the heap property.
+
+
+\end{document}
+
+

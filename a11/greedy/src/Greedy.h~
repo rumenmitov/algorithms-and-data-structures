@@ -1,0 +1,23 @@
+#pragma once
+
+#include <chrono>
+#include <time.h>
+#include <vector>
+
+
+struct Activity {
+    int id;
+    std::chrono::time_point<std::chrono::steady_clock> start;
+    std::chrono::time_point<std::chrono::steady_clock> end;
+};
+
+
+/**
+ * @brief Returns the latest starting activity.
+ * 
+ * @param std::vector<Activity>&
+ * 
+ * @return Activity
+*/
+Activity get_latest_starting_activity(std::vector<Activity>&);
+

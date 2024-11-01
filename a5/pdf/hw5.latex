@@ -1,0 +1,71 @@
+\documentclass{report}
+\title{Homework 5}
+\author{Rumen Mitov}
+
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+
+\graphicspath{ {./pdf/assets} }
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 5.1}
+\begin{center}
+    \includegraphics[scale=0.25]{graph}
+\end{center}
+For the results table please first build and run the program with \textbf{make all},
+you will then find the table in the file \textit{build/results.txt}. \\
+The function \textit{closed\_form} will not always produce the same answers as the other
+functions because it uses floating point arithmetic, hence if the input variable, n, is large enough
+precision could be lost. Thus, an incorrect answer will be returned. \\
+
+\section*{Problem 5.2}
+A brute force implementation of multiplication is just addition in repetition. 
+Basically we are adding \textbf{b} to the result, \textbf{a} times. Since addition
+happens in $\Theta(n)$ and we are repeating this step \textbf{a} times, we can conclude that
+the overall time complexity of this operation will be $\Theta(n^2)$. \\
+\newline
+\newline
+\newline
+\begin{algorithm}
+    \caption{Multiplication(a, b)}
+    \begin{algorithmic}
+        \If{$a$ = 0 or $b$ = 0}
+            \Return 0
+        \EndIf \\
+        \If{$a$ = 1}
+            \Return $b$
+        \EndIf \\
+        \If{$b$ = 1} 
+            \Return $a$
+        \EndIf \\
+
+        \Return $Multiplication($a$, (1 << $b$)) + Multiplication($a$, (1 << $b$))$
+    \end{algorithmic}
+    
+\end{algorithm}
+
+Since we are splitting b into 2 before the recursion step and addition and bit shifting both take
+$Theta(n)$ time, we estimate the time complexity to be: \\
+$T(n) = 2 \cdot T(\frac{n}{2}) + \Theta(n)$ \\
+\newline
+\newline
+Using the recursion tree method, we know that our recursion tree will have a 
+height of $\log n$, hence on each level of the tree we will have time complexity of
+$\Theta(n)$ due to the bit shifting and addition (after dropping constants), hence: \\
+$T(n) = \Theta(n \log n)$ \\
+\newline
+\newline
+Using the Master Theorem: \\ 
+$a = 2$ \\
+$b = 2$ \\
+$\log_b(a) = 1 \implies n^{\log_b(a)} = n$ \\
+Since $n^{\log_b(a)} = f(n) = n$ we can conclude that:
+$T(n) = \Theta(n \log n)$
+
+
+\end{document}
